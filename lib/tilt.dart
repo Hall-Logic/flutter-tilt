@@ -64,6 +64,9 @@ class DeviceTilt {
         _tilt = Tilt(
           x * (1 - filterGain) + roll * filterGain,
           y * (1 - filterGain) + pitch * filterGain,
+          a.x,
+          a.y,
+          a.z,
         );
         return _tilt;
       },
@@ -87,7 +90,11 @@ class Tilt {
   /// pi and -pi == device's screen facing down, shorter sides parallel to the ground
   final double yRadian;
 
-  const Tilt(this.xRadian, this.yRadian);
+  final double x;
+  final double y;
+  final double z;
+
+  const Tilt(this.xRadian, this.yRadian, this.x, this.y, this.z);
 
   /// Describes the rotation of the device's longer side
   /// 0 == parallel to the ground
@@ -102,6 +109,8 @@ class Tilt {
   /// -90 == left side of the device facing the ground, right side up
   /// 180 and -180 == device's screen facing down, shorter sides parallel to the ground
   double get yDegrees => yRadian * 180 / pi;
+
+
 
   @override
   String toString() => 'Tilt:\nx: $xDegrees\ny: $yDegrees';
