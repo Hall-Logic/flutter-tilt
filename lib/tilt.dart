@@ -25,7 +25,7 @@ class DeviceTilt {
 
   DeviceTilt({
     this.samplingRateMs = 20,
-    this.initialTilt = const Tilt(0, 0),
+    this.initialTilt = const Tilt(0, 0, 0, 0, 0),
     this.filterGain = 0.1,
     Stream<GyroscopeEvent>? gyroscope,
     Stream<AccelerometerEvent>? accelerometer,
